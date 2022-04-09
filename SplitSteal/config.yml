@@ -1,0 +1,483 @@
+ss-end-in: 30
+countdown:
+  start-under: 4
+  sound: BLOCK_COMPARATOR_CLICK
+change-of-heart-enabled: false
+sounds:
+  teleport: ENTITY_ENDERMAN_TELEPORT
+  menu-open: BLOCK_CHEST_OPEN
+  nochangeofheart: ENTITY_CAT_HISS
+  steal: ENTITY_BEE_DEATH
+  split: ENTITY_VILLAGER_CELEBRATE
+  result-split: ENTITY_VILLAGER_TRADE
+  result-steal: ENTITY_VEX_DEATH
+command-whitelist:
+  - '/splitsteal'
+  - '/ss'
+  - '/msg'
+blocks:
+  split: LIME_CONCRETE_POWDER
+  steal: CRIMSON_HYPHAE
+start:
+  title:
+    enabled: true
+    title: '&a&lSplit &7or &c&lSteal'
+    subtitle: '&fWhat will you do?'
+  message:
+    enabled: true
+    message:
+      - '&e&lSS &7You should decide whether you want to &asplit &7or &csteal'
+      - ' '
+      - '#5efb1f&lM#69fc3a&lo#74fc55&ln#7ffd70&le#8afd8b&ly: &f&l$%amount%'
+      - ' '
+      - '&7You have &a&l%seconds% &7seconds to decide!'
+messages:
+  no-perm: '&e&lSS &7You don''t have permission for this'
+  only-in-game: '&e&lSS &7This command is only for players'
+  player-not-found: '&e&lSS &7Player could not be found'
+  arena-not-found: '&e&lSS &7Arena could not be found'
+  not-unique-name: '&e&lSS &7The name of the new arena must be unique'
+  create-usage: '&e&lSS &7/splitshare setup create &a<arena-name>'
+  pos1-set: '&e&lSS &7First position is set successfully'
+  setpos1-usage: '&e&lSS &7/splitshare setup setpos1 &a<arena>'
+  pos2-set: '&e&lSS &7Second position is set successfully'
+  setpos2-usage: '&e&lSS &7/splitshare setup setpos2 &a<arena-name>'
+  set-result1-usage: '&e&lSS &7/splitshare setup setresult1 &a<arena>'
+  set-result2-usage: '&e&lSS &7/splitshare setup setresult2 &a<arena>'
+  result1-set: '&e&lSS &7The first result block of the &a%arena_name% &7is set'
+  result2-set: '&e&lSS &7The second result block of the &a%arena_name% &7is set'
+  set: '&aSet'
+  not-set: '&cNot Set'
+  active: '&ais active'
+  not-active: '&cis not active'
+  arena-usage: '&e&lSS &7/splitshare arena &a<arena>'
+  delete-usage: '&e&lSS &7/splitshare setup delete &a<arena>'
+  deleted: '&e&lSS &7You have deleted &a%arena_name%'
+  send-usage: '&e&lSS &7/splitshare send &a<player-1> <player-2> <arena> <money>'
+  invalid-number: '&e&lSS &7Invalid number'
+  arena-occupied: '&e&lSS &7Arena &a%arena_name% &7is occupied'
+  button-added: '&e&lSS &7New button for &a%arena_name% &7is added'
+  chosen-steal: '&e&lSS &7You chose &c&lSTEAL'
+  chosen-split: '&e&lSS &7You chose &a&lSPLIT'
+  set-spawn-usage: '&e&lSS &7/splitshare setup setspawn &a<arena>'
+  spawn-set: '&e&lSS &7Spawn point of &a%arena_name% &7is set'
+  command-blocked: '&e&lSS &7You can''t use this command now'
+  youcantdoit: '&e&lSS &7You can''t do it now'
+  canceled-nochoice: '&e&lSS &7This is canceled because &a%player% &7didn''t choose'
+  nochoice: '&e&lSS &7This is canceled because no one chose anything'
+  chose-split: '&e&lSS &a%player% &7chose &a&lSPLIT'
+  chose-steal: '&e&lSS &a%player% &7chose &c&lSTEAL'
+  nochangeofheart: '&e&lSS &7You can''t take your decision back'
+  arena-not-complete: '&e&lSS &7Arena &a%arena_name% &7is &cnot &7complete yet, see /ss arena &a%arena_name%'
+  both-steal: '&e&lSS &7No one gets money, you both chose &c&lSTEAL'
+  both-split: '&e&lSS &7You both chose &a&lSPLIT&7, you got $&a%amount%'
+  you-stole: '&e&lSS &7You stole $&a%amount%&7 by betraying. &a%player% &7chose &a&lSPLIT'
+  he-stole: '&e&lSS &7He chose &c&lSTEAL &7and you chose &a&lSPLIT&7. &7He stole $&a%amount%&7'
+  arena-check:
+    - '&e&lSS &7Arena &a%arena_name%'
+    - ' '
+    - '&fName: &a%arena_name%'
+    - '&fPosition 1: %position1%'
+    - '&fPosition 2: %position2%'
+    - '&fResult Spot 1: %result1%'
+    - '&fResult Spot 2: %result2%'
+    - '&fSpawn Point: &a%spawn%'
+    - '&fButtons: &a%buttons%'
+    - ' '
+    - '&7Arena %active%&7!'
+  arena-created:
+    - '&e&lSS &7You have &ccreated &7a new area called &a%arena_name%&7'
+    - '&aYou should set few locations too.'
+    - '&fSetup first and second positions for the players'
+    - '&7/splitshare setup setpos1 &a%arena_name%'
+    - '&7/splitshare setup setpos2 &a%arena_name%'
+    - '&fSetup the result blocks of those players'
+    - '&7/splitshare setup setresult1 &a%arena_name%'
+    - '&7/splitshare setup setresult2 &a%arena_name%'
+    - '&fSetup the buttons'
+    - '&7/splitshare setup addbutton &a%arena_name%'
+    - ' '
+    - '&dArena will not be activated until you set them'
+  commands:
+    - '&e&lSPLIT &r&cor &e&lSHARE &7by &cthelegend'
+    - ' '
+    - '&7/splitshare setup create &a<arena-name>'
+    - '&fTo create a new arena'
+    - '&7/splitshare setup setpos1 &a<arena-name>'
+    - '&fTo set the position of the first player in the arena'
+    - '&7/splitshare setup setpos2 &a<arena-name>'
+    - '&fTo set the position of the second player in the arena'
+    - '&7/splitshare setup setresult1 &a<arena-name>'
+    - '&fTo set the result block of the first player'
+    - '&7/splitshare setup setresult2 &a<arena-name>'
+    - '&fTo set the result block of the second player'
+menus:
+  name: '&2Split &0or &cSteal'
+  size: 54
+  items:
+    '0':
+      material: LIME_CONCRETE_POWDER
+      amount: 1
+      display_name: '#39fb01S#6afc40p#9bfc7fl#ccfdbei#fdfdfdt'
+      function: split
+      slot: 20
+      lore:
+        - '&7Click if you want to &asplit'
+        - '&7the money with the other player'
+        - ' '
+        - '&7If you choose split and if he chooses'
+        - '&csteal &7he will get all of the money'
+        - ' '
+        - '&fClick to decide'
+    '1':
+      material: CRIMSON_HYPHAE
+      amount: 1
+      display_name: '#fb0000S#f40e3ft#ec1d7fe#e52bbea#dd39fdl'
+      function: steal
+      slot: 24
+      lore:
+        - '&7Click if you want to &csteal'
+        - '&7the whole money for yourself'
+        - ' '
+        - '&7If you choose steal and if he'
+        - '&7chooses split, you keep the money'
+        - '&7But if he chooses steal too,'
+        - '&7You both will get nothing.'
+        - ' '
+        - '&fClick to decide'
+    '2':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 0
+    '3169':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 1
+    '3':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 2
+    '4':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 3
+    '5':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 4
+    '6':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 5
+    '7':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 6
+    '8':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 7
+    '9':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 8
+    '10':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 9
+    '11':
+      material: LIME_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 10
+    '12':
+      material: LIME_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 11
+    '13':
+      material: LIME_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 12
+    '14':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 13
+    '15':
+      material: RED_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 14
+    '16':
+      material: RED_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 15
+    '17':
+      material: RED_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 16
+    '18':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 17
+    '19':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 18
+    '20':
+      material: LIME_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 19
+    '21':
+      material: LIME_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 21
+    '22':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 22
+    '23':
+      material: RED_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 23
+    '24':
+      material: RED_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 25
+    '25':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 26
+    '26':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 27
+    '27':
+      material: LIME_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 28
+    '28':
+      material: LIME_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 29
+    '29':
+      material: LIME_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 30
+    '30':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 31
+    '31':
+      material: RED_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 32
+    '32':
+      material: RED_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 33
+    '33':
+      material: RED_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 34
+    '34':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 35
+    '35':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 36
+    '36':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 37
+    '37':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 38
+    '38':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 39
+    '39':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 40
+    '40':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 41
+    '41':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 42
+    '42':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 43
+    '43':
+      material: BLACK_STAINED_GLASS_PANE
+      amount: 1
+      display_name: ' '
+      lore: []
+      function: none
+      slot: 44
+    '44':
+      material: BARRIER
+      amount: 1
+      display_name: '&eBack'
+      lore: []
+      function: back
+      slot: 45
+    '45':
+      material: WARPED_SIGN
+      amount: 1
+      display_name: '#89fbd6H#a3f7e0o#bef3eaw #d8eef3T#f2eafdo &aS&7/&cS'
+      lore:
+        - '&7We will see which one of you'
+        - '&7is &cdevil &7and which is &aangel&7!'
+        - ' '
+        - '&7If you &asplit &7and also he &asplits'
+        - '&7You both get the money'
+        - ' '
+        - '&7If one of you chooses &csteal &7and'
+        - '&7the other chooses &asplit&7,'
+        - '&cstealer &7gets the money'
+        - ' '
+        - '&7If you both choose &csteal'
+        - '&7No one gets money.'
+        - ' '
+        - '&fNow decide!'
+      slot: 49
+      function: none
+    '46':
+      material: BARRIER
+      amount: 1
+      display_name: '&eBack'
+      lore: []
+      function: back
+      slot: 53
