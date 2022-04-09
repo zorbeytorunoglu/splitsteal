@@ -103,6 +103,8 @@ messages:
     - ' '
     - '&7/splitsteal setup create &a<arena-name>'
     - '&fTo create a new arena'
+    - '&7/splitsteal setup delete &a<arena-name>'
+    - '&fTo delete an arena'
     - '&7/splitsteal setup setpos1 &a<arena-name>'
     - '&fTo set the position of the first player in the arena'
     - '&7/splitsteal setup setpos2 &a<arena-name>'
