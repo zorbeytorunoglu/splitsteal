@@ -2,6 +2,7 @@
 Split or Steal
 
 Inspired by a famous television program "split or steal".
+See here: https://www.youtube.com/watch?v=TKaYRH6E36U
 
 You need Vault and an Economy plugin for this to work.
 
