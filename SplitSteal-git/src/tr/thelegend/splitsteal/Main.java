@@ -50,7 +50,7 @@ public class Main extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new Protection(this), this);
 		
 		getServer().getLogger().info("========== [ SPLIT or STEAL ] ==========");
-		getServer().getLogger().info("If you need help: discord.mc-market.com");
+		getServer().getLogger().info("If you need help: discord.mc-marketi.com");
 		getServer().getLogger().info("========== [ SPLIT or STEAL ] ==========");
 		
 		if (!setupEconomy()) {
