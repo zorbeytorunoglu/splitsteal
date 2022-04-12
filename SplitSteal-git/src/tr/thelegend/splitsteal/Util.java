@@ -152,12 +152,12 @@ public class Util {
 		p1.teleport(arena.getPos1());
 		
 		if (plugin.getSettingsHandler().getTeleportSound()!=null)
-			p1.playSound(p1, plugin.getSettingsHandler().getTeleportSound(), 2F, 1F);
+			p1.playSound(p1.getLocation(), plugin.getSettingsHandler().getTeleportSound(), 2F, 1F);
 		
 		p2.teleport(arena.getPos2());
 		
 		if (plugin.getSettingsHandler().getTeleportSound()!=null)
-			p2.playSound(p2, plugin.getSettingsHandler().getTeleportSound(), 2F, 1F);
+			p2.playSound(p2.getLocation(), plugin.getSettingsHandler().getTeleportSound(), 2F, 1F);
 		
 		if (plugin.getSettingsHandler().isStartTitleEnabled()) {
 			p1.sendTitle(plugin.getSettingsHandler().getStartTitle()
